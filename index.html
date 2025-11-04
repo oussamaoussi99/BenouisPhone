@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BenouisPhone</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: #0f0f0f;
+      color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    header {
+      background: linear-gradient(135deg, #202124, #1a1a1a);
+      color: #d4af37;
+      padding: 20px 0;
+      font-size: 32px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      border-bottom: 2px solid #d4af37;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 30px auto;
+      background: #1c1c1c;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+    }
+
+    h2 {
+      color: #d4af37;
+      margin-bottom: 10px;
+    }
+
+    .products {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      margin: 20px 0;
+    }
+
+    .product {
+      background: #222;
+      border-radius: 14px;
+      padding: 15px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .product img {
+      width: 100%;
+      border-radius: 14px;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      color: #d4af37;
+      font-weight: bold;
+      font-size: 18px;
+      margin: 10px 0;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      text-align: right;
+      margin-top: 20px;
+    }
+
+    input, textarea, select {
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      font-size: 15px;
+      width: 100%;
+      background: #2a2a2a;
+      color: #fff;
+    }
+
+    button {
+      background: #d4af37;
+      color: #000;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #b9962e;
+    }
+
+    .social {
+      margin-top: 25px;
+    }
+
+    .social a {
+      display: inline-block;
+      margin: 5px;
+      padding: 10px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .whatsapp {
+      background: #25D366;
+      color: #fff;
+    }
+
+    .tiktok {
+      background: #000;
+      color: #fff;
+      border: 1px solid #d4af37;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 15px;
+      font-size: 14px;
+      color: #aaa;
+      border-top: 1px solid #333;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>BenouisPhone</header>
+
+  <div class="container">
+    <h2>حامل هواتف مغناطيسي قوي وثابت بتصميم معدني أنيق</h2>
+    <p>يمنحك تجربة استخدام مريحة وآمنة أثناء القيادة، مع تصميم فاخر يتماشى مع ديكور سيارتك.</p>
+
+    <div class="products">
+      <div class="product">
+        <img src="product1.jpg" alt="حامل هواتف مغناطيسي">
+        <div class="price">السعر: 1600 دج</div>
+      </div>
+
+      <div class="product">
+        <img src="product2.jpg" alt="حامل هواتف معدني فاخر">
+        <div class="price">السعر: 1900 دج</div>
+      </div>
+    </div>
+
+    <form action="https://formsubmit.co/YOUR-FORM-ID" method="POST">
+      <input type="text" name="name" placeholder="الاسم الكامل" required>
+      <input type="tel" name="phone" placeholder="رقم الهاتف" required>
+      <input type="text" name="city" placeholder="الولاية / المدينة" required>
+      <textarea name="notes" placeholder="ملاحظات (اختياري)"></textarea>
+      <button type="submit">أرسل الطلب</button>
+    </form>
+
+    <div class="social">
+      <a class="whatsapp" href="https://wa.me/213561452047" target="_blank">تواصل عبر واتساب</a>
+      <a class="tiktok" href="https://www.tiktok.com/@oussamaiane" target="_blank">تابعنا على تيك توك</a>
+    </div>
+  </div>
+
+  <footer>© 2025 BenouisPhone — جميع الحقوق محفوظة</footer>
+
+</body>
+</html>
