@@ -8,59 +8,96 @@
   <style>
     body {
       font-family: 'Cairo', sans-serif;
-      background: #0f0f0f;
-      color: #f2f2f2;
+      background: #ffffff;
+      color: #111;
       margin: 0;
       padding: 0;
       text-align: center;
     }
 
     header {
-      background: linear-gradient(135deg, #202124, #1a1a1a);
-      color: #d4af37;
+      background: linear-gradient(135deg, #0066ff, #003366);
+      color: #fff;
       padding: 20px 0;
       font-size: 32px;
       font-weight: bold;
       letter-spacing: 1px;
-      border-bottom: 2px solid #d4af37;
+      border-bottom: 3px solid #007bff;
+      text-shadow: 0 0 10px rgba(0, 153, 255, 0.7);
     }
 
     .container {
-      max-width: 800px;
+      max-width: 850px;
       margin: 30px auto;
-      background: #1c1c1c;
+      background: #f8f8f8;
       border-radius: 16px;
-      padding: 20px;
-      box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+      padding: 25px;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
     }
 
     h2 {
-      color: #d4af37;
+      color: #004aad;
       margin-bottom: 10px;
+      text-shadow: 0 0 5px rgba(0, 153, 255, 0.3);
+    }
+
+    p {
+      color: #333;
     }
 
     .products {
       display: flex;
       flex-direction: column;
-      gap: 25px;
-      margin: 20px 0;
+      gap: 30px;
+      margin: 25px 0;
     }
 
     .product {
-      background: #222;
+      background: #fff;
       border-radius: 14px;
       padding: 15px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 0 20px rgba(0, 153, 255, 0.15);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .product:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 25px rgba(0, 153, 255, 0.35);
+    }
+
+    .product::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(0,153,255,0.15), transparent 60%);
+      animation: shine 4s infinite linear;
+      pointer-events: none;
+    }
+
+    @keyframes shine {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
     }
 
     .product img {
       width: 100%;
       border-radius: 14px;
       margin-bottom: 10px;
+      box-shadow: 0 0 20px rgba(0, 153, 255, 0.25);
+      transition: all 0.3s ease-in-out;
+    }
+
+    .product img:hover {
+      filter: brightness(1.15) saturate(1.1);
     }
 
     .price {
-      color: #d4af37;
+      color: #004aad;
       font-weight: bold;
       font-size: 18px;
       margin: 10px 0;
@@ -74,19 +111,19 @@
       margin-top: 20px;
     }
 
-    input, textarea, select {
+    input, textarea {
       padding: 10px;
       border-radius: 8px;
-      border: none;
+      border: 1px solid #ccc;
       font-size: 15px;
       width: 100%;
-      background: #2a2a2a;
-      color: #fff;
+      background: #fdfdfd;
+      color: #000;
     }
 
     button {
-      background: #d4af37;
-      color: #000;
+      background: linear-gradient(135deg, #007bff, #004aad);
+      color: #fff;
       border: none;
       padding: 12px;
       border-radius: 8px;
@@ -97,11 +134,11 @@
     }
 
     button:hover {
-      background: #b9962e;
+      background: linear-gradient(135deg, #005fd1, #003c99);
     }
 
     .social {
-      margin-top: 25px;
+      margin-top: 30px;
     }
 
     .social a {
@@ -122,15 +159,15 @@
     .tiktok {
       background: #000;
       color: #fff;
-      border: 1px solid #d4af37;
+      border: 1px solid #007bff;
     }
 
     footer {
       margin-top: 40px;
       padding: 15px;
       font-size: 14px;
-      color: #aaa;
-      border-top: 1px solid #333;
+      color: #666;
+      border-top: 1px solid #ddd;
     }
   </style>
 </head>
@@ -141,16 +178,16 @@
 
   <div class="container">
     <h2>حامل هواتف مغناطيسي قوي وثابت بتصميم معدني أنيق</h2>
-    <p>يمنحك تجربة استخدام مريحة وآمنة أثناء القيادة، مع تصميم فاخر يتماشى مع ديكور سيارتك.</p>
+    <p>يمنحك تجربة استخدام مريحة وآمنة أثناء القيادة، مع لمعان معدني أزرق أنيق يضفي لمسة تقنية فاخرة على سيارتك.</p>
 
     <div class="products">
       <div class="product">
-        <img src="product1.jpg" alt="حامل هواتف مغناطيسي">
+        <img src="Product1.jpg" alt="حامل هواتف مغناطيسي">
         <div class="price">السعر: 1600 دج</div>
       </div>
 
       <div class="product">
-        <img src="product2.jpg" alt="حامل هواتف معدني فاخر">
+        <img src="Product2.jpg" alt="حامل هواتف معدني فاخر">
         <div class="price">السعر: 1900 دج</div>
       </div>
     </div>
@@ -169,7 +206,7 @@
     </div>
   </div>
 
-  <footer>© 2025 BenouisPhone — جميع الحقوق محفوظة</footer>
+  <footer>© 2025 BenouisPhone</footer>
 
 </body>
 </html>
