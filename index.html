@@ -6,6 +6,8 @@
   <title>BenouisPhone</title>
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+
     body {
       font-family: 'Cairo', sans-serif;
       background: #ffffff;
@@ -13,6 +15,7 @@
       margin: 0;
       padding: 0;
       text-align: center;
+      overflow-x: hidden;
     }
 
     header {
@@ -24,6 +27,12 @@
       letter-spacing: 1px;
       border-bottom: 3px solid #007bff;
       text-shadow: 0 0 10px rgba(0, 153, 255, 0.7);
+      animation: fadeDown 1s ease-in-out;
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .container {
@@ -33,6 +42,12 @@
       border-radius: 16px;
       padding: 25px;
       box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+      animation: fadeUp 1s ease-in-out;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     h2 {
@@ -43,6 +58,7 @@
 
     p {
       color: #333;
+      margin-bottom: 20px;
     }
 
     .products {
@@ -60,6 +76,14 @@
       position: relative;
       overflow: hidden;
       transition: transform 0.3s, box-shadow 0.3s;
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    .product.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: all 1s ease-out;
     }
 
     .product:hover {
@@ -67,33 +91,16 @@
       box-shadow: 0 0 25px rgba(0, 153, 255, 0.35);
     }
 
-    .product::before {
-      content: "";
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(0,153,255,0.15), transparent 60%);
-      animation: shine 4s infinite linear;
-      pointer-events: none;
-    }
-
-    @keyframes shine {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
     .product img {
       width: 100%;
       border-radius: 14px;
       margin-bottom: 10px;
-      box-shadow: 0 0 20px rgba(0, 153, 255, 0.25);
+      box-shadow: 0 0 25px rgba(0, 153, 255, 0.25);
       transition: all 0.3s ease-in-out;
     }
 
     .product img:hover {
-      filter: brightness(1.15) saturate(1.1);
+      filter: brightness(1.2) saturate(1.1);
     }
 
     .price {
@@ -119,6 +126,13 @@
       width: 100%;
       background: #fdfdfd;
       color: #000;
+      transition: 0.3s;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #007bff;
+      box-shadow: 0 0 10px rgba(0, 153, 255, 0.2);
+      outline: none;
     }
 
     button {
@@ -135,6 +149,7 @@
 
     button:hover {
       background: linear-gradient(135deg, #005fd1, #003c99);
+      transform: translateY(-2px);
     }
 
     .social {
@@ -168,6 +183,7 @@
       font-size: 14px;
       color: #666;
       border-top: 1px solid #ddd;
+      animation: fadeUp 1s ease-in-out;
     }
   </style>
 </head>
@@ -207,6 +223,20 @@
   </div>
 
   <footer>© 2025 BenouisPhone</footer>
+
+  <script>
+    // جعل الصور تظهر بحركة عند التمرير
+    const products = document.querySelectorAll('.product');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    });
+
+    products.forEach(product => observer.observe(product));
+  </script>
 
 </body>
 </html>
