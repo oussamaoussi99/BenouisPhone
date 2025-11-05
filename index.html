@@ -179,6 +179,26 @@
     <video autoplay muted loop playsinline>
       <source src="bfbcb4a9da9d88ccfb7fe924b2133b0b.mp4" type="video/mp4">
     </video>
+    
+    <!-- 🔊 زر تشغيل / كتم صوت الفيديو -->
+<div id="sound-btn" 
+     onclick="toggleSound()" 
+     style="position: absolute; top: 20px; left: 20px; z-index: 10; background: rgba(0,74,173,0.9); color: white; border: none; border-radius: 50%; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,0.2);">
+  🔇
+</div>
+
+<script>
+function toggleSound() {
+  const video = document.querySelector('video');
+  const btn = document.getElementById('sound-btn');
+  video.muted = !video.muted;
+  btn.textContent = video.muted ? '🔇' : '🔊';
+  if (!video.muted) {
+    video.play().catch(() => {}); // لتفادي أخطاء التشغيل التلقائي
+  }
+}
+</script>
+    
     <header>BenouisPhone</header>
   </div>
 
