@@ -217,6 +217,44 @@ function toggleSound() {
       <img src="Product2.jpg" alt="حامل هواتف معدني فاخر">
       <div class="price">السعر: 1900 دج</div>
     </div>
+    <!-- 🛍️ اختيار المنتج -->
+<h3 style="text-align:center; margin-top:40px; color:#004aad;">اختر المنتج الذي ترغب به</h3>
+
+<div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-top:20px;">
+  <div onclick="selectProduct('حامل مغناطيسي صغير - 1600 دج')" 
+       id="product1" 
+       style="border:2px solid #ccc; border-radius:15px; padding:10px; width:180px; text-align:center; cursor:pointer; transition:0.3s;">
+    <img src="Product1.jpg" alt="حامل صغير" style="width:100%; border-radius:12px;">
+    <p style="font-weight:bold;">حامل مغناطيسي صغير</p>
+    <p style="color:#004aad;">1600 دج</p>
+  </div>
+
+  <div onclick="selectProduct('حامل مغناطيسي مزدوج - 1900 دج')" 
+       id="product2" 
+       style="border:2px solid #ccc; border-radius:15px; padding:10px; width:180px; text-align:center; cursor:pointer; transition:0.3s;">
+    <img src="Product2.jpg" alt="حامل مزدوج" style="width:100%; border-radius:12px;">
+    <p style="font-weight:bold;">حامل مغناطيسي مزدوج</p>
+    <p style="color:#004aad;">1900 دج</p>
+  </div>
+</div>
+
+<!-- حقل مخفي لحفظ اختيار المنتج -->
+<input type="hidden" id="selectedProduct" name="المنتج المختار">
+
+<script>
+function selectProduct(productName) {
+  document.getElementById("selectedProduct").value = productName;
+  document.getElementById("product1").style.border = "2px solid #ccc";
+  document.getElementById("product2").style.border = "2px solid #ccc";
+
+  if (productName.includes("صغير")) {
+    document.getElementById("product1").style.border = "3px solid #004aad";
+  } else {
+    document.getElementById("product2").style.border = "3px solid #004aad";
+  }
+}
+</script>
+    
 
     <form action="https://formsubmit.co/YOUR-FORM-ID" method="POST">
       <input type="text" name="name" placeholder="الاسم الكامل" required>
