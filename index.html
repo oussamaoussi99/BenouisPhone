@@ -258,7 +258,170 @@ function selectProduct(productName) {
 }
 </script>
     
+<!-- قسم التوصيل -->
+<div style="font-family: 'Poppins', 'Tajawal', sans-serif; direction: rtl; text-align: center; margin-top: 30px;">
 
+  <h3 style="color:#007bff; font-weight:600; margin-bottom:15px;">
+    🚚 التوصيل متوفر لجميع ولايات الوطن 🇩🇿
+  </h3>
+
+  <label for="wilaya" style="display:block; font-weight:500; margin-bottom:8px;">📍 اختر ولايتك</label>
+  <select id="wilaya" name="wilaya" required 
+    style="width:90%; max-width:400px; padding:12px; border-radius:12px; border:1px solid #ddd; background:#f8f8f8; font-size:16px;">
+    <option value="">-- اختر ولايتك --</option>
+    <option value="01">01 - أدرار</option>
+    <option value="02">02 - الشلف</option>
+    <option value="03">03 - الأغواط</option>
+    <option value="04">04 - أم البواقي</option>
+    <option value="05">05 - باتنة</option>
+    <option value="06">06 - بجاية</option>
+    <option value="07">07 - بسكرة</option>
+    <option value="08">08 - بشار</option>
+    <option value="09">09 - البليدة</option>
+    <option value="10">10 - البويرة</option>
+    <option value="11">11 - تمنراست</option>
+    <option value="12">12 - تبسة</option>
+    <option value="13">13 - تلمسان</option>
+    <option value="14">14 - تيارت</option>
+    <option value="15">15 - تيزي وزو</option>
+    <option value="16">16 - الجزائر</option>
+    <option value="17">17 - الجلفة</option>
+    <option value="18">18 - جيجل</option>
+    <option value="19">19 - سطيف</option>
+    <option value="20">20 - سعيدة</option>
+    <option value="21">21 - سكيكدة</option>
+    <option value="22">22 - سيدي بلعباس</option>
+    <option value="23">23 - عنابة</option>
+    <option value="24">24 - قالمة</option>
+    <option value="25">25 - قسنطينة</option>
+    <option value="26">26 - المدية</option>
+    <option value="27">27 - مستغانم</option>
+    <option value="28">28 - المسيلة</option>
+    <option value="29">29 - معسكر</option>
+    <option value="30">30 - ورقلة</option>
+    <option value="31">31 - وهران</option>
+    <option value="32">32 - البيض</option>
+    <option value="33">33 - إليزي</option>
+    <option value="34">34 - برج بوعريريج</option>
+    <option value="35">35 - بومرداس</option>
+    <option value="36">36 - الطارف</option>
+    <option value="37">37 - تندوف</option>
+    <option value="38">38 - تيسمسيلت</option>
+    <option value="39">39 - الوادي</option>
+    <option value="40">40 - خنشلة</option>
+    <option value="41">41 - سوق أهراس</option>
+    <option value="42">42 - تيبازة</option>
+    <option value="43">43 - ميلة</option>
+    <option value="44">44 - عين الدفلى</option>
+    <option value="45">45 - النعامة</option>
+    <option value="46">46 - عين تموشنت</option>
+    <option value="47">47 - غرداية</option>
+    <option value="48">48 - غليزان</option>
+    <option value="49">49 - توقرت</option>
+    <option value="50">50 - جانت</option>
+    <option value="51">51 - المغير</option>
+    <option value="52">52 - المنيعة</option>
+    <option value="53">53 - أولاد جلال</option>
+    <option value="54">54 - برج باجي مختار</option>
+    <option value="55">55 - بني عباس</option>
+    <option value="56">56 - إن صالح</option>
+    <option value="57">57 - إن قزام</option>
+    <option value="58">58 - المغير</option>
+  </select>
+
+  <br><br>
+
+  <label for="deliveryType" style="display:block; font-weight:500; margin-bottom:8px;">🚛 نوع التوصيل</label>
+  <select id="deliveryType" name="deliveryType" required 
+    style="width:90%; max-width:400px; padding:12px; border-radius:12px; border:1px solid #ddd; background:#f8f8f8; font-size:16px;">
+    <option value="">-- اختر نوع التوصيل --</option>
+    <option value="home">🏠 إلى المنزل</option>
+    <option value="office">🏢 إلى المكتب</option>
+  </select>
+
+  <p id="deliveryPrice" style="color:#00aaff; font-weight:600; margin-top:15px; font-size:18px;"></p>
+</div>
+
+<script>
+  const prices = {
+    "01": {home: 850, office: 450},
+    "02": {home: 850, office: 450},
+    "03": {home: 850, office: 450},
+    "04": {home: 850, office: 450},
+    "05": {home: 850, office: 450},
+    "06": {home: 850, office: 450},
+    "07": {home: 850, office: 450},
+    "08": {home: 850, office: 450},
+    "09": {home: 850, office: 450},
+    "10": {home: 850, office: 450},
+    "11": {home: 1000, office: 600},
+    "12": {home: 850, office: 450},
+    "13": {home: 850, office: 450},
+    "14": {home: 850, office: 450},
+    "15": {home: 850, office: 450},
+    "16": {home: 850, office: 450},
+    "17": {home: 850, office: 450},
+    "18": {home: 850, office: 450},
+    "19": {home: 850, office: 450},
+    "20": {home: 850, office: 450},
+    "21": {home: 850, office: 450},
+    "22": {home: 850, office: 450},
+    "23": {home: 850, office: 450},
+    "24": {home: 850, office: 450},
+    "25": {home: 850, office: 450},
+    "26": {home: 850, office: 450},
+    "27": {home: 850, office: 450},
+    "28": {home: 850, office: 450},
+    "29": {home: 850, office: 450},
+    "30": {home: 850, office: 450},
+    "31": {home: 850, office: 450},
+    "32": {home: 850, office: 450},
+    "33": {home: 1000, office: 600},
+    "34": {home: 850, office: 450},
+    "35": {home: 850, office: 450},
+    "36": {home: 850, office: 450},
+    "37": {home: 1000, office: 600},
+    "38": {home: 850, office: 450},
+    "39": {home: 850, office: 450},
+    "40": {home: 850, office: 450},
+    "41": {home: 850, office: 450},
+    "42": {home: 850, office: 450},
+    "43": {home: 850, office: 450},
+    "44": {home: 850, office: 450},
+    "45": {home: 850, office: 450},
+    "46": {home: 850, office: 450},
+    "47": {home: 850, office: 450},
+    "48": {home: 850, office: 450},
+    "49": {home: 850, office: 450},
+    "50": {home: 1000, office: 600},
+    "51": {home: 850, office: 450},
+    "52": {home: 850, office: 450},
+    "53": {home: 850, office: 450},
+    "54": {home: 1000, office: 600},
+    "55": {home: 1000, office: 600},
+    "56": {home: 1000, office: 600},
+    "57": {home: 1000, office: 600},
+    "58": {home: 850, office: 450}
+  };
+
+  const wilaya = document.getElementById('wilaya');
+  const deliveryType = document.getElementById('deliveryType');
+  const deliveryPrice = document.getElementById('deliveryPrice');
+
+  function updatePrice() {
+    const w = wilaya.value;
+    const d = deliveryType.value;
+    if (w && d) {
+      const price = prices[w][d];
+      deliveryPrice.innerHTML = `💰 سعر التوصيل: ${price} دج`;
+    } else {
+      deliveryPrice.innerHTML = "";
+    }
+  }
+
+  wilaya.addEventListener('change', updatePrice);
+  deliveryType.addEventListener('change', updatePrice);
+</script>
     <form action="https://formsubmit.co/YOUR-FORM-ID" method="POST">
       <input type="text" name="name" placeholder="الاسم الكامل" required>
       <input type="tel" name="phone" placeholder="رقم الهاتف" required>
