@@ -4,68 +4,85 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BenouisPhone</title>
-  <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
 
     body {
       font-family: 'Cairo', sans-serif;
       background: #ffffff;
-      color: #111;
       margin: 0;
       padding: 0;
-      text-align: center;
+      color: #111;
       overflow-x: hidden;
     }
 
-    header {
-      background: linear-gradient(135deg, #0066ff, #003366);
-      color: #fff;
-      padding: 20px 0;
-      font-size: 32px;
-      font-weight: bold;
-      letter-spacing: 1px;
+    /* ✅ خلفية الفيديو */
+    .video-bg {
+      position: relative;
+      width: 100%;
+      height: 350px;
+      overflow: hidden;
       border-bottom: 3px solid #007bff;
-      text-shadow: 0 0 10px rgba(0, 153, 255, 0.7);
+    }
+
+    .video-bg video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      z-index: 0;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      filter: brightness(0.6) saturate(1.3);
+    }
+
+    /* ✅ طبقة تدرج خفيف فوق الفيديو */
+    .video-bg::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(255,255,255,0.1));
+      z-index: 1;
+    }
+
+    /* ✅ عنوان الموقع فوق الفيديو */
+    header {
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      color: #fff;
+      font-size: 36px;
+      font-weight: bold;
+      text-shadow: 0 0 12px rgba(0, 153, 255, 0.9);
       animation: fadeDown 1s ease-in-out;
     }
 
     @keyframes fadeDown {
-      from { opacity: 0; transform: translateY(-30px); }
-      to { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translate(-50%, -40%); }
+      to { opacity: 1; transform: translate(-50%, -50%); }
     }
 
+    /* ✅ محتوى الصفحة */
     .container {
       max-width: 850px;
-      margin: 30px auto;
+      margin: 50px auto;
       background: #f8f8f8;
       border-radius: 16px;
       padding: 25px;
       box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
-      animation: fadeUp 1s ease-in-out;
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
     }
 
     h2 {
       color: #004aad;
-      margin-bottom: 10px;
       text-shadow: 0 0 5px rgba(0, 153, 255, 0.3);
-    }
-
-    p {
-      color: #333;
-      margin-bottom: 20px;
-    }
-
-    .products {
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-      margin: 25px 0;
     }
 
     .product {
@@ -73,41 +90,20 @@
       border-radius: 14px;
       padding: 15px;
       box-shadow: 0 0 20px rgba(0, 153, 255, 0.15);
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.3s, box-shadow 0.3s;
-      opacity: 0;
-      transform: translateY(40px);
-    }
-
-    .product.visible {
-      opacity: 1;
-      transform: translateY(0);
-      transition: all 1s ease-out;
-    }
-
-    .product:hover {
-      transform: scale(1.03);
-      box-shadow: 0 0 25px rgba(0, 153, 255, 0.35);
+      margin-bottom: 25px;
+      transition: 0.3s;
     }
 
     .product img {
       width: 100%;
       border-radius: 14px;
-      margin-bottom: 10px;
       box-shadow: 0 0 25px rgba(0, 153, 255, 0.25);
-      transition: all 0.3s ease-in-out;
-    }
-
-    .product img:hover {
-      filter: brightness(1.2) saturate(1.1);
     }
 
     .price {
       color: #004aad;
       font-weight: bold;
-      font-size: 18px;
-      margin: 10px 0;
+      margin-top: 10px;
     }
 
     form {
@@ -124,15 +120,6 @@
       border: 1px solid #ccc;
       font-size: 15px;
       width: 100%;
-      background: #fdfdfd;
-      color: #000;
-      transition: 0.3s;
-    }
-
-    input:focus, textarea:focus {
-      border-color: #007bff;
-      box-shadow: 0 0 10px rgba(0, 153, 255, 0.2);
-      outline: none;
     }
 
     button {
@@ -142,7 +129,6 @@
       padding: 12px;
       border-radius: 8px;
       font-size: 17px;
-      font-weight: bold;
       cursor: pointer;
       transition: 0.3s;
     }
@@ -163,7 +149,6 @@
       border-radius: 25px;
       text-decoration: none;
       font-weight: bold;
-      transition: 0.3s;
     }
 
     .whatsapp {
@@ -183,31 +168,34 @@
       font-size: 14px;
       color: #666;
       border-top: 1px solid #ddd;
-      animation: fadeUp 1s ease-in-out;
     }
   </style>
 </head>
 
 <body>
 
-  <header>BenouisPhone</header>
+  <!-- 🎬 خلفية الفيديو -->
+  <div class="video-bg">
+    <video autoplay muted loop playsinline>
+      <source src="bfbcb4a9da9d88ccfb7fe924b2133b0b.mp4" type="video/mp4">
+    </video>
+    <header>BenouisPhone</header>
+  </div>
 
   <div class="container">
     <h2> ✨️حامل هواتف مغناطيسي🧲📱 قوي وثابت بتصميم معدني أنيق</h2>
     <p>يمنحك تجربة استخدام مريحة وآمنة أثناء القيادة، مع لمعان معدني أنيق يضفي لمسة تقنية فاخرة على سيارتك 
       تستطيع تثبيته في زجاج السيارة أو في لوحة القيادة حسب المكان الذي يسهل لك استخدام هاتفك مع التحكم الكامل فيه🪄
       متوفر بنوعين 😍✅️ .</p>
+    
+    <div class="product">
+      <img src="Product1.jpg" alt="حامل هواتف مغناطيسي">
+      <div class="price">السعر: 1600 دج</div>
+    </div>
 
-    <div class="products">
-      <div class="product">
-        <img src="Product1.jpg" alt="حامل هواتف مغناطيسي">
-        <div class="price">السعر: 1900 دج</div>
-      </div>
-
-      <div class="product">
-        <img src="Product2.jpg" alt="حامل هواتف معدني فاخر">
-        <div class="price">السعر: 1600 دج</div>
-      </div>
+    <div class="product">
+      <img src="Product2.jpg" alt="حامل هواتف معدني فاخر">
+      <div class="price">السعر: 1900 دج</div>
     </div>
 
     <form action="https://formsubmit.co/YOUR-FORM-ID" method="POST">
@@ -225,20 +213,5 @@
   </div>
 
   <footer>© 2025 BenouisPhone</footer>
-
-  <script>
-    // جعل الصور تظهر بحركة عند التمرير 
-    const products = document.querySelectorAll('.product');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    });
-
-    products.forEach(product => observer.observe(product));
-  </script>
-
 </body>
 </html>
